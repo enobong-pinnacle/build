@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enobong Okposin - Senior Project Manager & Founder - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #1a252f;
+            background: white;
+        }
+
+        @media print {
+            body { background: white; }
+            section { page-break-inside: avoid; margin-bottom: 30px; }
+            h2 { page-break-after: avoid; }
+            table { page-break-inside: avoid; }
+            .no-print { display: none; }
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* HEADER */
+        header {
+            text-align: center;
+            padding: 40px 0;
+            border-bottom: 3px solid #667eea;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            font-size: 2.8em;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        header .subtitle {
+            font-size: 1.3em;
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        header .tagline {
+            color: #7f8c8d;
+            font-size: 1.05em;
+        }
+
+        /* SECTIONS */
+        section {
+            margin-bottom: 35px;
+        }
+
+        section h2 {
+            font-size: 1.8em;
+            color: #2c3e50;
+            border-bottom: 3px solid #27ae60;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        section h3 {
+            font-size: 1.2em;
+            color: #2c3e50;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        /* METRICS TABLE */
+        .metrics-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: #f8f9fa;
+        }
+
+        .metrics-table td {
+            padding: 20px;
+            text-align: center;
+            border: 2px solid #e0e0e0;
+        }
+
+        .metrics-table .number {
+            font-size: 2.2em;
+            font-weight: 700;
+            color: #667eea;
+        }
+
+        .metrics-table .label {
+            font-size: 0.95em;
+            color: #7f8c8d;
+            margin-top: 5px;
+        }
+
+        /* EXPERIENCE TABLE */
+        .experience-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .experience-table tr {
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .experience-table td {
+            padding: 15px;
+        }
+
+        .experience-table .date {
+            width: 180px;
+            font-weight: 600;
+            color: #27ae60;
+            vertical-align: top;
+        }
+
+        .experience-table .content strong {
+            display: block;
+            font-size: 1.05em;
+        }
+
+        .experience-table .content {
+            color: #2c3e50;
+        }
+
+        /* PROJECT CARDS */
+        .project-item {
+            background: #f9f9f9;
+            padding: 18px;
+            margin: 15px 0;
+            border-left: 4px solid #667eea;
+            border-radius: 5px;
+        }
+
+        .project-item h4 {
+            color: #2c3e50;
+            margin-bottom: 8px;
+            font-size: 1.1em;
+        }
+
+        .project-metrics {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            font-size: 0.95em;
+            margin-top: 8px;
+        }
+
+        .project-metrics span:first-child {
+            color: #7f8c8d;
+        }
+
+        .project-metrics span:last-child {
+            font-weight: 600;
+            color: #667eea;
+        }
+
+        /* SKILLS TABLE */
+        .skills-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .skills-table tr {
+            background: white;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .skills-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .skills-table td {
+            padding: 12px 15px;
+        }
+
+        .skills-table .skill-name {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .skills-table .proficiency {
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        /* AWARDS */
+        .awards-list, .cert-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .awards-list li, .cert-list li {
+            padding: 12px 0;
+            padding-left: 25px;
+            position: relative;
+            color: #2c3e50;
+        }
+
+        .awards-list li:before, .cert-list li:before {
+            content: "★";
+            position: absolute;
+            left: 0;
+            color: #f39c12;
+            font-weight: bold;
+        }
+
+        .cert-list li:before {
+            content: "✓";
+            color: #27ae60;
+        }
+
+        /* CONTACT */
+        .contact-info {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+
+        .contact-info p {
+            margin: 8px 0;
+            color: #2c3e50;
+        }
+
+        .contact-info strong {
+            color: #667eea;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            border-top: 2px solid #e0e0e0;
+            margin-top: 40px;
+            color: #7f8c8d;
+        }
+
+        /* PRINT BUTTON */
+        .print-btn {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-bottom: 20px;
+            cursor: pointer;
+            border: none;
+            font-size: 1em;
+        }
+
+        .print-btn:hover {
+            background: #764ba2;
+        }
+
+        @media print {
+            .print-btn { display: none; }
+            header { border-bottom: 2px solid #667eea; }
+            body { padding: 0; }
+            .container { padding: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- PRINT BUTTON -->
+        <div class="no-print" style="text-align: center;">
+            <button class="print-btn" onclick="window.print()">🖨️ Print to PDF</button>
+            <p style="color: #7f8c8d; font-size: 0.9em;">Use browser print dialog (Ctrl+P / Cmd+P) and select "Save as PDF"</p>
+        </div>
+
+        <!-- HEADER -->
+        <header>
+            <div class="subtitle">SENIOR PROJECT MANAGER | FOUNDER | STEM LEADER</div>
+            <h1>Enobong Okposin</h1>
+            <p class="tagline">Transforming visions into reality through strategic execution, innovation, and exceptional team leadership</p>
+        </header>
+
+        <!-- KEY METRICS -->
+        <section>
+            <h2>📊 Key Impact Metrics</h2>
+            <table class="metrics-table">
+                <tr>
+                    <td>
+                        <div class="number">5+</div>
+                        <div class="label">Years of Experience</div>
+                    </td>
+                    <td>
+                        <div class="number">250+</div>
+                        <div class="label">People Led</div>
+                    </td>
+                    <td>
+                        <div class="number">95%</div>
+                        <div class="label">Satisfaction Rate</div>
+                    </td>
+                    <td>
+                        <div class="number">0%</div>
+                        <div class="label">Budget Overruns</div>
+                    </td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- PROFESSIONAL EXPERIENCE -->
+        <section>
+            <h2>🎯 Professional Experience</h2>
+            <table class="experience-table">
+                <tr>
+                    <td class="date">Aug 2024 - Present</td>
+                    <td class="content">
+                        <strong>Founder & Executive</strong>
+                        The Global Project Leaders (TGPL)<br>
+                        <span style="color: #7f8c8d; font-size: 0.9em;">Evolved grassroots community into full-service PM agency. Launched training cohorts, built 12+ member PM community, established foundational systems and client services.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="date">Sept 2025 - Jan 2026</td>
+                    <td class="content">
+                        <strong>Project Engineer</strong>
+                        SCHIRONE | Infrastructure & Energy (5 months)<br>
+                        <span style="color: #7f8c8d; font-size: 0.9em;">Led end-to-end execution of multi-disciplinary infrastructure & energy projects. Managed NDDC government-funded projects with compliance reviews, vendor negotiations, and cost benchmarking.</span>
+                    </td>
+                </tr>
+                <tr style="background: #f9f9f9;">
+                    <td class="date">May 2025 - Oct 2025</td>
+                    <td class="content">
+                        <strong>Head of Operations</strong>
+                        SustainEnergy Pathway (6 months)<br>
+                        <span style="color: #7f8c8d; font-size: 0.9em;">Coordinated cross-functional teams, tracked project progress, managed resource allocation and logistics to ensure operational efficiency.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="date">Aug 2024 - Apr 2025</td>
+                    <td class="content">
+                        <strong>Program & Project Manager</strong>
+                        For The Love of DeFi (9 months)<br>
+                        <span style="color: #7f8c8d; font-size: 0.9em;">Led 2-day conference (+142.86% attendance growth), managed 100+ participant tech training (95% satisfaction), established new office space with modern design concept.</span>
+                    </td>
+                </tr>
+                <tr style="background: #f9f9f9;">
+                    <td class="date">May 2024 - Oct 2024</td>
+                    <td class="content">
+                        <strong>COO & Product Manager</strong>
+                        TinaPay (8 months)<br>
+                        <span style="color: #7f8c8d; font-size: 0.9em;">Implemented operational processes, optimized productivity, coordinated cross-functional design, development, and QA teams.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="date">Jan 2023 - Oct 2024</td>
+                    <td class="content">
+                        <strong>Club Leader</strong>
+                        GirlUp Nigeria (1 year 10 months)<br>
+                        <span style="color: #7f8c8d; font-size: 0.9em;">Led 10+ executive members and 30+ volunteers. Designed impact-driven campaigns reaching 1,000+ young girls across STEM, education, and empowerment initiatives.</span>
+                    </td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- FLAGSHIP PROJECTS -->
+        <section>
+            <h2>🚀 Flagship Projects</h2>
+            <div class="project-item">
+                <h4>Tech Talent Training Program</h4>
+                <div class="project-metrics">
+                    <span>Participants:</span><span>100+</span>
+                    <span>Satisfaction:</span><span>95% ✓</span>
+                    <span>Timeline:</span><span>7 months</span>
+                    <span>Budget:</span><span>On Target ✓</span>
+                </div>
+            </div>
+
+            <div class="project-item">
+                <h4>Conference Planning & Execution</h4>
+                <div class="project-metrics">
+                    <span>Attendance Growth:</span><span>+142.86% ✓</span>
+                    <span>Team Managed:</span><span>50+ Volunteers</span>
+                    <span>Duration:</span><span>2 days</span>
+                    <span>Performance:</span><span>Exceeded ✓</span>
+                </div>
+            </div>
+
+            <div class="project-item">
+                <h4>Infrastructure & Energy Projects</h4>
+                <div class="project-metrics">
+                    <span>Project Scope:</span><span>Multi-disciplinary</span>
+                    <span>Compliance:</span><span>100% ✓</span>
+                    <span>Domains:</span><span>Construction, Electrical, Renewable</span>
+                    <span>Status:</span><span>Delivered ✓</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- CORE COMPETENCIES -->
+        <section>
+            <h2>💡 Core Competencies</h2>
+            <table class="skills-table">
+                <tr>
+                    <td class="skill-name">Strategic Planning</td>
+                    <td class="proficiency">95%</td>
+                    <td class="skill-name">Team Leadership</td>
+                    <td class="proficiency">98%</td>
+                </tr>
+                <tr>
+                    <td class="skill-name">Risk Management</td>
+                    <td class="proficiency">92%</td>
+                    <td class="skill-name">Budget Management</td>
+                    <td class="proficiency">96%</td>
+                </tr>
+                <tr>
+                    <td class="skill-name">Stakeholder Management</td>
+                    <td class="proficiency">94%</td>
+                    <td class="skill-name">Quality Assurance</td>
+                    <td class="proficiency">93%</td>
+                </tr>
+                <tr>
+                    <td class="skill-name">Agile Methodologies</td>
+                    <td class="proficiency">91%</td>
+                    <td class="skill-name">Community Building</td>
+                    <td class="proficiency">97%</td>
+                </tr>
+                <tr>
+                    <td class="skill-name">Product Management</td>
+                    <td class="proficiency">90%</td>
+                    <td class="skill-name">Digital Marketing</td>
+                    <td class="proficiency">85%</td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- AWARDS & RECOGNITION -->
+        <section>
+            <h2>🏆 Awards & Recognition</h2>
+            <ul class="awards-list">
+                <li><strong>Girl in STEM Leadership Award</strong> (2023) - Industry Recognition for outstanding leadership in STEM fields</li>
+                <li><strong>Most Innovative Project Manager</strong> - Career milestone for exceptional project delivery and innovation</li>
+                <li><strong>SPE Port Harcourt Section Scholarship</strong> (2021) - Academic excellence award in petroleum engineering</li>
+            </ul>
+        </section>
+
+        <!-- CERTIFICATIONS & TRAINING -->
+        <section>
+            <h2>📚 Certifications & Professional Development</h2>
+            <ul class="cert-list">
+                <li>Product Management Certified - Advanced PM methodologies & frameworks</li>
+                <li>Asana Workflow Specialist - Professional project tracking & automation</li>
+                <li>Green Skills Certificate - Sustainable energy & renewable energy projects</li>
+                <li>Digital Marketing & Content Creation - Brand strategy & content development</li>
+                <li>Soft Skills Training - Leadership, communication & team development</li>
+            </ul>
+        </section>
+
+        <!-- PERFORMANCE SUMMARY -->
+        <section>
+            <h2>📈 Performance Summary</h2>
+            <h3>Project Delivery Excellence</h3>
+            <table class="metrics-table">
+                <tr>
+                    <td>
+                        <div class="number">100%</div>
+                        <div class="label">On-Time Delivery</div>
+                    </td>
+                    <td>
+                        <div class="number">100%</div>
+                        <div class="label">Budget Adherence</div>
+                    </td>
+                    <td>
+                        <div class="number">100%</div>
+                        <div class="label">Quality Standards</div>
+                    </td>
+                    <td>
+                        <div class="number">95%+</div>
+                        <div class="label">Client Satisfaction</div>
+                    </td>
+                </tr>
+            </table>
+
+            <h3>Risk Management & Mitigation</h3>
+            <p style="color: #2c3e50; margin: 15px 0;">Demonstrated expertise in identifying, assessing, and mitigating project risks through:</p>
+            <ul class="cert-list">
+                <li>Proactive scope management and stakeholder alignment</li>
+                <li>Resource constraint planning with cross-functional training</li>
+                <li>Milestone tracking with automated timeline management</li>
+                <li>Variance tracking ensuring 0% budget overruns</li>
+                <li>Compliance audits maintaining excellence standards</li>
+            </ul>
+        </section>
+
+        <!-- EDUCATION -->
+        <section>
+            <h2>🎓 Education</h2>
+            <div class="contact-info">
+                <p><strong>University of Uyo</strong></p>
+                <p>Bachelor of Engineering (BE) | Petroleum Engineering</p>
+                <p style="color: #7f8c8d;">2019 - 2024</p>
+            </div>
+        </section>
+
+        <!-- CONTACT INFORMATION -->
+        <section>
+            <h2>📞 Contact Information</h2>
+            <div class="contact-info">
+                <p><strong>📧 Email:</strong> enobongokposin31@gmail.com</p>
+                <p><strong>🔗 LinkedIn:</strong> linkedin.com/in/enobongokposin</p>
+                <p><strong>📍 Location:</strong> Lagos, Nigeria</p>
+                <p><strong>🌐 Website/Portfolio:</strong> https://github.com/enobong-pinnacle/build</p>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer>
+            <p><strong>Enobong Okposin</strong></p>
+            <p>Senior Project Manager | Founder | STEM Leader</p>
+            <p style="margin-top: 10px; font-size: 0.9em;">
+                <em>Transforming visions into measurable success through strategic execution, innovation, and exceptional leadership</em>
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        // Auto-load print dialog on load (optional - comment out if not needed)
+        // window.addEventListener('load', function() {
+        //     setTimeout(function() { window.print(); }, 500);
+        // });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enobong Okposin - Senior Project Manager & Founder</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2c3e50;
+            --secondary: #27ae60;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #1a252f;
+            --border: #bdc3c7;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 40px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .hero-content .title {
+            font-size: 1.5em;
+            color: #ffd700;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .hero-content p {
+            font-size: 1.1em;
+            margin-bottom: 30px;
+            line-height: 1.6;
+            opacity: 0.95;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .stat-box {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .stat-number {
+            font-size: 2.2em;
+            font-weight: 700;
+            color: #ffd700;
+        }
+
+        .stat-label {
+            font-size: 0.9em;
+            margin-top: 5px;
+            opacity: 0.9;
+        }
+
+        .hero-photo {
+            text-align: center;
+        }
+
+        .hero-photo img {
+            width: 100%;
+            max-width: 350px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            border: 5px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* SECTIONS */
+        section {
+            background: white;
+            margin: 30px 40px;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            font-size: 2.2em;
+            color: var(--primary);
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 4px solid var(--secondary);
+            display: inline-block;
+        }
+
+        /* EXPERIENCE TIMELINE */
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+
+        .timeline-item {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 30px;
+            margin-bottom: 25px;
+            padding: 15px 0;
+            border-left: 4px solid var(--secondary);
+            padding-left: 20px;
+        }
+
+        .timeline-date {
+            font-weight: 600;
+            color: var(--secondary);
+            font-size: 0.95em;
+        }
+
+        .timeline-title {
+            font-weight: 700;
+            font-size: 1.2em;
+            color: var(--primary);
+        }
+
+        .timeline-org {
+            color: #7f8c8d;
+            font-size: 0.95em;
+            margin-top: 3px;
+        }
+
+        /* CHARTS SECTION */
+        .charts-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 300px;
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #e0e0e0;
+        }
+
+        .chart-container canvas {
+            max-height: 250px;
+        }
+
+        .chart-title {
+            font-size: 1.1em;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        /* SKILLS MATRIX */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .skill-item {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .skill-item h4 {
+            margin-bottom: 10px;
+            font-size: 1em;
+        }
+
+        .skill-bar {
+            background: rgba(255, 255, 255, 0.3);
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        .skill-fill {
+            background: #ffd700;
+            height: 100%;
+            border-radius: 4px;
+            animation: fillAnimation 1s ease-out;
+        }
+
+        @keyframes fillAnimation {
+            from { width: 0; }
+        }
+
+        /* PROJECTS */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .project-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-card h4 {
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .project-metric {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+            font-size: 0.95em;
+        }
+
+        .metric-value {
+            font-weight: 700;
+            color: #ffd700;
+        }
+
+        /* AWARDS */
+        .awards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .award-badge {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(245, 87, 108, 0.3);
+        }
+
+        .award-badge-icon {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .award-badge h4 {
+            font-size: 1em;
+            margin-bottom: 5px;
+        }
+
+        .award-badge p {
+            font-size: 0.85em;
+            opacity: 0.95;
+        }
+
+        /* METRICS */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .metric-card {
+            background: linear-gradient(135deg, #27ae60 0%, #16a085 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .metric-value-large {
+            font-size: 2.5em;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .metric-label {
+            font-size: 0.9em;
+            opacity: 0.95;
+        }
+
+        /* GANTT CHART */
+        .gantt-container {
+            overflow-x: auto;
+            margin-top: 25px;
+        }
+
+        .gantt-row {
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            gap: 15px;
+            margin-bottom: 15px;
+            align-items: center;
+        }
+
+        .gantt-label {
+            font-size: 0.95em;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .gantt-bar-container {
+            background: #f0f0f0;
+            height: 25px;
+            border-radius: 5px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gantt-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75em;
+            color: white;
+            font-weight: 600;
+        }
+
+        /* RISK MANAGEMENT */
+        .risk-matrix {
+            margin-top: 25px;
+        }
+
+        .risk-item {
+            display: grid;
+            grid-template-columns: 200px 1fr 100px;
+            gap: 15px;
+            padding: 15px;
+            margin-bottom: 10px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 5px solid var(--secondary);
+        }
+
+        .risk-item h4 {
+            margin-bottom: 3px;
+            color: var(--primary);
+        }
+
+        .risk-item p {
+            font-size: 0.9em;
+            color: #7f8c8d;
+        }
+
+        .risk-level {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            border-radius: 5px;
+            padding: 5px 10px;
+        }
+
+        .risk-low {
+            background: #27ae60;
+            color: white;
+        }
+
+        .risk-medium {
+            background: #f39c12;
+            color: white;
+        }
+
+        .risk-high {
+            background: #e74c3c;
+            color: white;
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 30px;
+            margin-top: 50px;
+        }
+
+        footer a {
+            color: #ffd700;
+            text-decoration: none;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+
+            .charts-grid,
+            .projects-grid,
+            .awards-grid,
+            .metrics-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5em;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .timeline-item {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                margin: 20px;
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HERO SECTION -->
+    <div class="hero">
+        <div class="hero-content">
+            <h1>Enobong Okposin</h1>
+            <div class="title">Senior Project Manager | Founder | STEM Leader</div>
+            <p>Transforming visions into reality through strategic execution, innovation, and exceptional team leadership.</p>
+
+            <div class="hero-stats">
+                <div class="stat-box">
+                    <div class="stat-number">5+</div>
+                    <div class="stat-label">Years Experience</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">250+</div>
+                    <div class="stat-label">People Led</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">95%</div>
+                    <div class="stat-label">Satisfaction Rate</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">0%</div>
+                    <div class="stat-label">Budget Overruns</div>
+                </div>
+            </div>
+
+            <div style="margin-top: 25px;">
+                <strong style="display: block; margin-bottom: 10px;">Contact</strong>
+                📧 enobongokposin31@gmail.com<br>
+                🔗 linkedin.com/in/enobongokposin<br>
+                📍 Lagos, Nigeria
+            </div>
+        </div>
+
+        <div class="hero-photo">
+            <div style="width: 350px; height: 350px; background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%); border-radius: 20px; display: flex; align-items: center; justify-content: center; border: 5px solid rgba(255,255,255,0.2); margin: 0 auto; color: white; font-size: 1.2em;">
+                <div style="text-align: center;">
+                    <div style="font-size: 4em; margin-bottom: 15px;">👤</div>
+                    <p>Professional Headshot</p>
+                    <p style="font-size: 0.9em; opacity: 0.8;">(Profile Photo)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- KEY METRICS DASHBOARD -->
+    <section>
+        <h2>📊 Impact Metrics</h2>
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <div class="metric-value-large">142.86%</div>
+                <div class="metric-label">Event Growth</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value-large">100+</div>
+                <div class="metric-label">Trained Participants</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value-large">12+</div>
+                <div class="metric-label">Active Community</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value-large">1000+</div>
+                <div class="metric-label">Lives Impacted</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPERIENCE TIMELINE -->
+    <section>
+        <h2>🎯 Professional Journey</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-date">Aug 2024 - Present</div>
+                <div>
+                    <div class="timeline-title">Founder & Executive</div>
+                    <div class="timeline-org">The Global Project Leaders (TGPL)</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">Sept 2025 - Jan 2026</div>
+                <div>
+                    <div class="timeline-title">Project Engineer</div>
+                    <div class="timeline-org">SCHIRONE | Infrastructure & Energy</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">May 2025 - Oct 2025</div>
+                <div>
+                    <div class="timeline-title">Head of Operations</div>
+                    <div class="timeline-org">SustainEnergy Pathway</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">Aug 2024 - Apr 2025</div>
+                <div>
+                    <div class="timeline-title">Program & Project Manager</div>
+                    <div class="timeline-org">For The Love of DeFi</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">May 2024 - Oct 2024</div>
+                <div>
+                    <div class="timeline-title">COO & Product Manager</div>
+                    <div class="timeline-org">TinaPay</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">Jan 2023 - Oct 2024</div>
+                <div>
+                    <div class="timeline-title">Club Leader & Community Champion</div>
+                    <div class="timeline-org">GirlUp Nigeria - Reached 1,000+ girls</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECT PORTFOLIO -->
+    <section>
+        <h2>🚀 Flagship Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <h4>Tech Talent Training</h4>
+                <div class="project-metric">
+                    <span>Participants:</span>
+                    <span class="metric-value">100+</span>
+                </div>
+                <div class="project-metric">
+                    <span>Satisfaction:</span>
+                    <span class="metric-value">95%</span>
+                </div>
+                <div class="project-metric">
+                    <span>Duration:</span>
+                    <span class="metric-value">7 months</span>
+                </div>
+                <div class="project-metric">
+                    <span>Status:</span>
+                    <span class="metric-value">✓ On Budget</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h4>Conference Planning</h4>
+                <div class="project-metric">
+                    <span>Attendance:</span>
+                    <span class="metric-value">+142.86%</span>
+                </div>
+                <div class="project-metric">
+                    <span>Team Size:</span>
+                    <span class="metric-value">50+ Volunteers</span>
+                </div>
+                <div class="project-metric">
+                    <span>Timeline:</span>
+                    <span class="metric-value">2 days</span>
+                </div>
+                <div class="project-metric">
+                    <span>Status:</span>
+                    <span class="metric-value">✓ Exceeded Target</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h4>Infrastructure Projects</h4>
+                <div class="project-metric">
+                    <span>Projects:</span>
+                    <span class="metric-value">Multiple</span>
+                </div>
+                <div class="project-metric">
+                    <span>Scope:</span>
+                    <span class="metric-value">Construction & Energy</span>
+                </div>
+                <div class="project-metric">
+                    <span>Compliance:</span>
+                    <span class="metric-value">100%</span>
+                </div>
+                <div class="project-metric">
+                    <span>Status:</span>
+                    <span class="metric-value">✓ Delivered</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- GANTT CHART REPRESENTATION -->
+        <h3 style="margin-top: 40px; color: var(--primary); font-size: 1.3em;">Project Timeline (Duration & Overlap)</h3>
+        <div class="gantt-container">
+            <div class="gantt-row">
+                <div class="gantt-label">TGPL (Current)</div>
+                <div class="gantt-bar-container">
+                    <div class="gantt-bar" style="width: 90%;"><span>Founder</span></div>
+                </div>
+            </div>
+            <div class="gantt-row">
+                <div class="gantt-label">Tech Training Program</div>
+                <div class="gantt-bar-container">
+                    <div class="gantt-bar" style="width: 35%; margin-left: 10%;"><span>7 months</span></div>
+                </div>
+            </div>
+            <div class="gantt-row">
+                <div class="gantt-label">Conference 2024</div>
+                <div class="gantt-bar-container">
+                    <div class="gantt-bar" style="width: 15%; margin-left: 8%;"><span>2 days</span></div>
+                </div>
+            </div>
+            <div class="gantt-row">
+                <div class="gantt-label">For Love of DeFi</div>
+                <div class="gantt-bar-container">
+                    <div class="gantt-bar" style="width: 32%; margin-left: 8%;"><span>9 months</span></div>
+                </div>
+            </div>
+            <div class="gantt-row">
+                <div class="gantt-label">Infrastructure (SCHIRONE)</div>
+                <div class="gantt-bar-container">
+                    <div class="gantt-bar" style="width: 22%; margin-left: 38%;"><span>5 months</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS & EXPERTISE -->
+    <section>
+        <h2>💡 Core Competencies</h2>
+        <div class="skills-grid">
+            <div class="skill-item">
+                <h4>Strategic Planning</h4>
+                <div class="skill-bar">
+                    <div class="skill-fill" style="width: 95%;"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <h4>Team Leadership</h4>
+                <div class="skill-bar">
+                    <div class="skill-fill" style="width: 98%;"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <h4>Risk Management</h4>
+                <div class="skill-bar">
+                    <div class="skill-fill" style="width: 92%;"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <h4>Budget Management</h4>
+                <div class="skill-bar">
+                    <div class="skill-fill" style="width: 96%;"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <h4>Stakeholder Management</h4>
+                <div class="skill-bar">
+                    <div class="skill-fill" style="width: 94%;"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <h4>Quality Assurance</h4>
+                <div class="skill-bar">
+                    <div class="skill-fill" style="width: 93%;"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <h4>Agile Methodologies</h4>
+                <div class="skill-bar">
+                    <div class="skill-fill" style="width: 91%;"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <h4>Community Building</h4>
+                <div class="skill-bar">
+                    <div class="skill-fill" style="width: 97%;"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SKILLS BREAKDOWN CHART -->
+        <div class="charts-grid">
+            <div class="chart-container">
+                <div class="chart-title">Core Skills Distribution</div>
+                <canvas id="skillsChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <div class="chart-title">Experience by Domain</div>
+                <canvas id="domainChart"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <!-- AWARDS & RECOGNITION -->
+    <section>
+        <h2>🏆 Awards & Recognition</h2>
+        <div class="awards-grid">
+            <div class="award-badge">
+                <div class="award-badge-icon">👩‍🔬</div>
+                <h4>Girl in STEM Award</h4>
+                <p>2023 Leadership Awardee</p>
+            </div>
+            <div class="award-badge">
+                <div class="award-badge-icon">🎖️</div>
+                <h4>Most Innovative PM</h4>
+                <p>Industry Recognition</p>
+            </div>
+            <div class="award-badge">
+                <div class="award-badge-icon">🏅</div>
+                <h4>SPE Scholarship</h4>
+                <p>2021 Port Harcourt Section</p>
+            </div>
+        </div>
+
+        <!-- CERTIFICATIONS -->
+        <h3 style="margin-top: 40px; color: var(--primary); font-size: 1.3em; margin-bottom: 20px;">Certifications & Training</h3>
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;">
+            <div style="background: #f8f9fa; padding: 20px; border-radius: 10px; border-left: 4px solid var(--secondary);">
+                <h4 style="color: var(--primary); margin-bottom: 8px;">Product Management Certified</h4>
+                <p style="color: #7f8c8d; font-size: 0.9em;">Advanced PM methodologies & frameworks</p>
+            </div>
+            <div style="background: #f8f9fa; padding: 20px; border-radius: 10px; border-left: 4px solid var(--secondary);">
+                <h4 style="color: var(--primary); margin-bottom: 8px;">Asana Workflow Specialist</h4>
+                <p style="color: #7f8c8d; font-size: 0.9em;">Professional project tracking & automation</p>
+            </div>
+            <div style="background: #f8f9fa; padding: 20px; border-radius: 10px; border-left: 4px solid var(--secondary);">
+                <h4 style="color: var(--primary); margin-bottom: 8px;">Green Skills Certificate</h4>
+                <p style="color: #7f8c8d; font-size: 0.9em;">Sustainable energy & renewable projects</p>
+            </div>
+            <div style="background: #f8f9fa; padding: 20px; border-radius: 10px; border-left: 4px solid var(--secondary);">
+                <h4 style="color: var(--primary); margin-bottom: 8px;">Digital Marketing Specialist</h4>
+                <p style="color: #7f8c8d; font-size: 0.9em;">Content creation & brand strategy</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- RISK MANAGEMENT FRAMEWORK -->
+    <section>
+        <h2>⚠️ Risk Management & Mitigation</h2>
+        <div class="risk-matrix">
+            <div class="risk-item">
+                <div>
+                    <h4>Scope Creep</h4>
+                    <p>Managed through defined charters & stakeholder alignment</p>
+                </div>
+                <div class="risk-level risk-low">LOW</div>
+            </div>
+            <div class="risk-item">
+                <div>
+                    <h4>Resource Constraints</h4>
+                    <p>Proactive allocation planning & team cross-training</p>
+                </div>
+                <div class="risk-level risk-low">LOW</div>
+            </div>
+            <div class="risk-item">
+                <div>
+                    <h4>Timeline Delays</h4>
+                    <p>Buffer planning & milestone tracking with Asana automation</p>
+                </div>
+                <div class="risk-level risk-low">LOW</div>
+            </div>
+            <div class="risk-item">
+                <div>
+                    <h4>Budget Overruns</h4>
+                    <p>Variance tracking & cost benchmarking ensure 0% overruns</p>
+                </div>
+                <div class="risk-level risk-low">LOW</div>
+            </div>
+            <div class="risk-item">
+                <div>
+                    <h4>Stakeholder Misalignment</h4>
+                    <p>Regular communication plans & collaborative goal-setting</p>
+                </div>
+                <div class="risk-level risk-low">LOW</div>
+            </div>
+            <div class="risk-item">
+                <div>
+                    <h4>Quality Standards</h4>
+                    <p>QA processes & compliance audits maintain excellence</p>
+                </div>
+                <div class="risk-level risk-low">LOW</div>
+            </div>
+        </div>
+
+        <!-- PERFORMANCE METRICS CHART -->
+        <div class="charts-grid">
+            <div class="chart-container">
+                <div class="chart-title">Project Success Rate</div>
+                <canvas id="successChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <div class="chart-title">Team Satisfaction & Performance</div>
+                <canvas id="satisfactionChart"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <!-- PERFORMANCE ANALYSIS -->
+    <section>
+        <h2>📈 Performance Analytics</h2>
+        <div class="charts-grid">
+            <div class="chart-container">
+                <div class="chart-title">Project Budget Adherence</div>
+                <canvas id="budgetChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <div class="chart-title">Timeline Accuracy</div>
+                <canvas id="timelineChart"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p><strong>Enobong Okposin</strong> | Senior Project Manager & Founder</p>
+        <p>📧 <a href="mailto:enobongokposin31@gmail.com">enobongokposin31@gmail.com</a> |
+           🔗 <a href="https://linkedin.com/in/enobongokposin" target="_blank">LinkedIn</a> |
+           📍 Lagos, Nigeria</p>
+        <p style="margin-top: 15px; font-size: 0.9em; opacity: 0.8;">Let's transform your vision into measurable success</p>
+    </footer>
+
+    <!-- CHARTS JAVASCRIPT -->
+    <script>
+        // Skills Chart
+        const skillsCtx = document.getElementById('skillsChart').getContext('2d');
+        new Chart(skillsCtx, {
+            type: 'radar',
+            data: {
+                labels: ['Strategic Planning', 'Leadership', 'Risk Mgmt', 'Budget', 'Stakeholders', 'Quality', 'Agile', 'Community'],
+                datasets: [{
+                    label: 'Proficiency Level',
+                    data: [95, 98, 92, 96, 94, 93, 91, 97],
+                    borderColor: '#667eea',
+                    backgroundColor: 'rgba(102, 126, 234, 0.2)',
+                    borderWidth: 2,
+                    pointBackgroundColor: '#667eea',
+                    pointBorderColor: '#fff',
+                    pointBorderWidth: 2,
+                    pointRadius: 5
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: {
+                    legend: { display: true, position: 'bottom' }
+                },
+                scales: {
+                    r: {
+                        beginAtZero: true,
+                        max: 100,
+                        ticks: { stepSize: 20 }
+                    }
+                }
+            }
+        });
+
+        // Domain Chart
+        const domainCtx = document.getElementById('domainChart').getContext('2d');
+        new Chart(domainCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Infrastructure & Energy', 'Tech & Software', 'Community & Social', 'Operations', 'Product'],
+                datasets: [{
+                    data: [25, 30, 20, 15, 10],
+                    backgroundColor: [
+                        '#667eea',
+                        '#764ba2',
+                        '#f093fb',
+                        '#27ae60',
+                        '#f39c12'
+                    ],
+                    borderColor: '#fff',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { position: 'bottom' }
+                }
+            }
+        });
+
+        // Success Chart
+        const successCtx = document.getElementById('successChart').getContext('2d');
+        new Chart(successCtx, {
+            type: 'bar',
+            data: {
+                labels: ['On Time', 'On Budget', 'Quality Met', 'Client Satisfied'],
+                datasets: [{
+                    label: 'Success Rate (%)',
+                    data: [100, 100, 100, 95],
+                    backgroundColor: ['#27ae60', '#27ae60', '#27ae60', '#f39c12'],
+                    borderRadius: 8,
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                plugins: { legend: { display: false } },
+                scales: {
+                    x: { beginAtZero: true, max: 110, ticks: { callback: v => v + '%' } }
+                }
+            }
+        });
+
+        // Satisfaction Chart
+        const satisfactionCtx = document.getElementById('satisfactionChart').getContext('2d');
+        new Chart(satisfactionCtx, {
+            type: 'line',
+            data: {
+                labels: ['Q1', 'Q2', 'Q3', 'Q4', 'Current'],
+                datasets: [{
+                    label: 'Team Satisfaction',
+                    data: [88, 91, 93, 95, 95],
+                    borderColor: '#667eea',
+                    backgroundColor: 'rgba(102, 126, 234, 0.1)',
+                    borderWidth: 3,
+                    fill: true,
+                    tension: 0.4,
+                    pointBackgroundColor: '#667eea',
+                    pointRadius: 5
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: { legend: { display: true, position: 'bottom' } },
+                scales: { y: { beginAtZero: true, max: 100 } }
+            }
+        });
+
+        // Budget Chart
+        const budgetCtx = document.getElementById('budgetChart').getContext('2d');
+        new Chart(budgetCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Projects On Budget', 'Within 5%', 'Overages'],
+                datasets: [{
+                    data: [90, 10, 0],
+                    backgroundColor: ['#27ae60', '#f39c12', '#e74c3c'],
+                    borderWidth: 2,
+                    borderColor: '#fff'
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { position: 'bottom' }
+                }
+            }
+        });
+
+        // Timeline Chart
+        const timelineCtx = document.getElementById('timelineChart').getContext('2d');
+        new Chart(timelineCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Early', 'On Schedule', 'Delayed'],
+                datasets: [{
+                    label: 'Project Completion',
+                    data: [30, 65, 5],
+                    backgroundColor: ['#27ae60', '#3498db', '#e74c3c'],
+                    borderRadius: 8,
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                indexAxis: 'y',
+                plugins: { legend: { display: false } },
+                scales: {
+                    x: { beginAtZero: true, ticks: { callback: v => v + '%' } }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
